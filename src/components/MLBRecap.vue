@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <div class="baseballrecap">
-        <div id="recap-container" v-bind:class="{ 'notActive' : notCreated, 'Active' : isCreated }" :style=" [ isCustomHome ? { backgroundImage: `url('${getBackground('field_gen')}')`} : { backgroundImage: `url('${getBackground(teams[selectedHome].abbrev)}')` }] ">
+        <div id="recap-container" v-bind:class="{ 'notActive' : notCreated }" :style=" [ isCustomHome ? { backgroundImage: `url('${getBackground('field_gen')}')`} : { backgroundImage: `url('${getBackground(teams[selectedHome].abbrev)}')` }] ">
           <div id="gradLeft"></div>
           <div id="gradRight"></div>
           <div id="recap-body">
@@ -13,7 +13,7 @@
               <div id="teams">
                 <div class="team">
                   <div v-if="!isCustom && !isCustomHome" class="logo">
-                    <img :src="getImgUrl(teams[selectedAway].abbrev)" v-bind:alt="teams[selectedAway].abbrev"/>
+                    <img :src="getImgUrl(teams[selectedAway].abbrev)" v-bind:alt="teams[selectedAway].abbrev" />
                   </div>
                   <div v-if="!isCustom" v-bind:class="{ 'customTeamName': isCustom || isCustomHome, 'teamName': isReal }" v-bind:style="{ backgroundColor: 'rgba(' + teams[selectedAway].primary + ',0.8)', borderBottom: '4px solid' + teams[selectedAway].secondary }">
                     <h1> {{ teams[selectedAway].mascot }} </h1>
@@ -681,7 +681,10 @@ export default {
   },
   methods: {
     saveCanvas() {
-      html2canvas(document.querySelector("#recap-container")).then(canvas => {
+      html2canvas(document.querySelector("#recap-container"), {
+        useCors: true,
+        allowTaint: true,
+      }).then(canvas => {
       canvas.toBlob(function(blob){
         saveAs(blob, 'GameRecap.png');}, 'image/png', 1);
       });

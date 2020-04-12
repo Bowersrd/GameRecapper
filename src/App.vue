@@ -13,7 +13,7 @@
     <v-content>
       <routerView/>
     </v-content>
-    <v-footer color="primary white--text pl-3">Game Recapper &copy; 2019</v-footer>
+    <v-footer color="primary white--text pl-3" height="50px">Game Recapper &copy; 2019</v-footer>
   </v-app>
 </template>
 
@@ -45,9 +45,5 @@ body, h1, h2, p, ul, ol {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-html {
-  font-size: 16px;
 }
 </style>

@@ -65,7 +65,7 @@
 <style>
 #wrapper{
   width: 100%;
-  height: 600px;
+  height: 700px;
   background: url('../assets/img/background.jpg');
   background-position: center;
   background-size: cover;
@@ -74,7 +74,7 @@
 
 .bannerButton{
   position: relative;
-  top: 500px;
+  top: 600px;
 }
 
 /* Media */
